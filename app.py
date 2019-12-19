@@ -13,9 +13,9 @@ blog.new_post()
 
 blog.save_to_mongo()
 
-blog.from_mongo()
+from_database = Blog.from_mongo(blog.id)
 
-blog.get_posts()
+print(blog.get_posts())
 
 # post = Post(blog_id="123",
 #             title="Another great post",
