@@ -1,4 +1,4 @@
-import uuid
+import uuid4
 from database import Database
 
 __author__ = 'Cate'

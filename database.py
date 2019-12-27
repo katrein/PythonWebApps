@@ -13,7 +13,7 @@ class Database():
 
     @staticmethod
     def initialize():
-        client = pymong.MongoClient(Database.URI)
+        client = pymongo.MongoClient(Database.URI)
         Database.DATABASE = client['mydbnamehere'] #TODO Add db name here
 
     @staticmethod

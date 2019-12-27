@@ -1,21 +1,26 @@
 from database import Database
-from models.post import Post
+from menu import Menu
+# from models.post import Post
 
 __author__ = 'Cate'
 
 Database.initialize()
 
-blog = Blog(author="Cate",
-            title="Sample title",
-            description="Sample description")
+menu = Menu()
 
-blog.new_post()
+menu.run_menu()
 
-blog.save_to_mongo()
-
-from_database = Blog.from_mongo(blog.id)
-
-print(blog.get_posts())
+# blog = Blog(author="Cate",
+#             title="Sample title",
+#             description="Sample description")
+#
+# blog.new_post()
+#
+# blog.save_to_mongo()
+#
+# from_database = Blog.from_mongo(blog.id)
+#
+# print(blog.get_posts())
 
 # post = Post(blog_id="123",
 #             title="Another great post",

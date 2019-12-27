@@ -1,3 +1,7 @@
+import uuid4
+import datetime
+
+from models.database import Database
 from models.post import Post
 
 __author__ = "Cate"
