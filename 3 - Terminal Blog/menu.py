@@ -1,3 +1,6 @@
+from database import Database
+from models.blog import Blog
+
 __author__ = 'Cate'
 
 class Menu(object):
@@ -18,7 +21,7 @@ class Menu(object):
             return False
 
     def _prompt_user_for_account(self):
-        title = inout("Enter blog title: ")
+        title = input("Enter blog title: ")
         description = input("Enter blog description: ")
         blog = Blog(author=self.user,
                     title=title,
@@ -31,20 +34,21 @@ class Menu(object):
         if read_or_write == 'R':
             self._list_blogs()
             self._view_blog()
+            pass
         elif read_or_write == 'W':
             self.user_blog.new_post()
         else:
-            print("Thank you got blogging!")
+            print("Thank you for blogging!")
 
-    def _list_blogs():
+    def _list_blogs(self):
         blogs = Database.find(collection='blogs',
-                                query={})
+                              query={})
         for blog in blogs:
-            print("ID: {}, Title: {}, Athor: {}".format(blog['id'], blog['title'], blog['author']))
+            print("ID: {}, Title: {}, Author: {}".format(blog['id'], blog['title'], blog['author']))
 
     def _view_blog(self):
         blog_to_see = input("Enter the ID of the blog you'd like to read: ")
         blog = Blog.from_mongo(blog_to_see)
-        posts = bog.get_posts()
+        posts = blog.get_posts()
         for post in posts:
-            print("Date: {}, title: {}\n\n{}".format(post['created_date'], post['title'], post ['content']))
+            print("Date: {}, title: {}\n\n{}".format(post['created_date'], post['title'], post['content']))

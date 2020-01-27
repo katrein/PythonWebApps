@@ -2,26 +2,21 @@ import pymongo
 
 __author__ = 'Cate'
 
-class Database():
+class Database(object):
     URI = "mongodb://127.0.0.1:27017"
     DATABASE = None
-
-    # uri = "mongodb://127.0.0.1:27017"
-    # client = pymongo.MongoClient(uri)
-    # database = client['fullstack']
-    # collection = database['students']
 
     @staticmethod
     def initialize():
         client = pymongo.MongoClient(Database.URI)
-        Database.DATABASE = client['mydbnamehere'] #TODO Add db name here
+        Database.DATABASE = client['blogdb']
 
     @staticmethod
     def insert(collection, data):
         Database.DATABASE[collection].insert(data)
 
     @staticmethod
-    def find (collection, query):
+    def find(collection, query):
         return Database.DATABASE[collection].find(query)
 
     @staticmethod

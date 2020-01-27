@@ -1,5 +1,6 @@
-import uuid4
+import uuid
 from database import Database
+import datetime
 
 __author__ = 'Cate'
 
@@ -10,7 +11,7 @@ class Post(object):
         self.title = title
         self.content = content
         self.author = author
-        self.created_date = data
+        self.created_date = date
         self.id = uuid.uuid4().hex if id is None else id
 
     def save_to_mongo(self):
@@ -27,7 +28,7 @@ class Post(object):
             'created_date': self.created_date
         }
 
-    @staticmethod
+    @classmethod
     def from_mongo(cls, id):
         post_data = Database.find_one(collection='posts', query={'id': id})
         return cls(blog_id=post_data['blog_id'],
